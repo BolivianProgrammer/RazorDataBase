@@ -13,27 +13,34 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Tarea.nombreTarea" class="control-label"></label>
                 <input asp-for="Tarea.nombreTarea" class="form-control" />
                 <span asp-validation-for="Tarea.nombreTarea" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Tarea.fechaVencimiento" class="control-label"></label>
                 <input asp-for="Tarea.fechaVencimiento" class="form-control" />
                 <span asp-validation-for="Tarea.fechaVencimiento" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Tarea.estado" class="control-label"></label>
-                <input asp-for="Tarea.estado" class="form-control" />
+                <select asp-for="Tarea.estado" class="form-select">
+                    <option value="">-- Seleccionar estado --</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="En progreso">En progreso</option>
+                    <option value="Terminado">Terminado</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
                 <span asp-validation-for="Tarea.estado" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Tarea.idUsuario" class="control-label"></label>
-                <input asp-for="Tarea.idUsuario" class="form-control" />
+                <input asp-for="Tarea.idUsuario" class="form-control" min="1" />
                 <span asp-validation-for="Tarea.idUsuario" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -45,5 +52,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
